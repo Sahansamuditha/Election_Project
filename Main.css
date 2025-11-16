@@ -1,0 +1,107 @@
+
+body{
+    background-color: hwb(34 85% 9%) ;
+}
+.up_1 h1 {
+    text-align: center;
+    font-size: 30px;
+    line-height: 36px;
+    letter-spacing: 0px;
+    margin: 0%;
+    padding: 0%;  
+}
+.up_1 p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: center;
+    color: #717182;
+    margin: 0%;
+    padding: 0%;
+}
+#up_img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;   
+}
+.center_1{
+    width: 650px;
+    height: 952px;
+    border-radius: 20px;
+    border: 2px;
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    margin-bottom: auto;
+    shape-margin: 20px;
+    box-shadow: 0px 0px 30px #5c5b5b;
+    padding: 50px;
+}
+#admin_img01{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 100%;
+    object-fit: cover;
+    width:96px;
+    height: 96px;
+}
+.admin_1 h1 {
+    text-align: center;
+    margin: 1%;
+    padding: 0%;
+    font-size: 36px;
+}
+.admin_1 p{
+    text-align: center;
+    font-size: 20px;
+    color: #717182;
+    margin: 1%;
+    padding: 0%;
+    margin-bottom: 20px;
+    margin-top: 15px;
+}
+#admin_img02{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    border-radius: 10%;
+    width:500px;
+    height: 8px;
+
+}
+.input_1{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.input_1 label{
+    font-size: 25px;
+    line-height: 28px;
+    font-weight: 400;
+
+}
+.input_1 input{
+    position: relative;
+    margin-bottom:15px;
+    width: 630px;
+    height: 70px;
+    border: 2px;
+    border-radius: 8px;
+    background-color: #f3f3f5;
+    font-size: 20px;
+}
+
+
+.input_1 button{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 630px;
+    height: 70px;
+    background: linear-gradient( #8B1538,#007A3D) ;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+
