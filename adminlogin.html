@@ -1,0 +1,317 @@
+
+<html>
+<head>
+    
+    <title>Sri Lankan Election System - Admin Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .color-bar {
+            height: 4px;
+            width: 250px;
+            background: linear-gradient(to right, #8B1538 0%, #8B1538 33%, #FFB81C 33%, #FFB81C 50%, #FF6B35 50%, #FF6B35 66%, #006747 66%, #006747 100%);
+            margin: 0 auto 15px;
+            border-radius: 2px;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            color: #2c3e50;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        .login-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            padding: 40px;
+            width: 100%;
+            max-width: 420px;
+        }
+
+        .shield-icon {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .shield-container {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #8B1538 0%, #006747 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(139, 21, 56, 0.3);
+        }
+
+        .icon-img {
+            display: inline-block;
+            vertical-align: middle;
+            object-fit: contain;
+        }
+
+        .title-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .title-section h2 {
+            font-size: 24px;
+            color: #2c3e50;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .title-section p {
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        .divider {
+            height: 3px;
+            width: 100%;
+            background: linear-gradient(to right, #8B1538 0%, #8B1538 33%, #FFB81C 33%, #FFB81C 50%, #FF6B35 50%, #FF6B35 66%, #006747 66%, #006747 100%);
+            margin-bottom: 25px;
+            border-radius: 2px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #2c3e50;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #dfe6e9;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+            outline: none;
+        }
+
+        .form-group input:focus {
+            border-color: #8B1538;
+        }
+
+        .password-wrapper {
+            position: relative;
+        }
+
+        .password-wrapper input {
+            padding-right: 40px;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+            color: #7f8c8d;
+        }
+
+        .toggle-password:hover {
+            color: #2c3e50;
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #8B1538 0%, #006747 100%);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 12px rgba(139, 21, 56, 0.2);
+        }
+
+        .login-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(139, 21, 56, 0.3);
+        }
+
+        .demo-credentials {
+            margin-top: 25px;
+            background: #fffbf0;
+            border: 1px solid #ffe8a1;
+            border-radius: 6px;
+            padding: 20px;
+        }
+
+        .demo-credentials h3 {
+            font-size: 15px;
+            color: #2c3e50;
+            text-align: center;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .credentials-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            font-size: 13px;
+        }
+
+        .credential-item {
+            color: #7f8c8d;
+        }
+
+        .credential-item strong {
+            color: #5a6c7d;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 25px;
+            color: #7f8c8d;
+            font-size: 12px;
+        }
+
+        .footer p {
+            margin: 5px 0;
+        }
+
+        @media (max-width: 500px) {
+            .credentials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 24px;
+            }
+
+            .login-card {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="header">
+        <div class="color-bar"></div>
+        <h1>Sri Lankan Election System</h1>
+        <p>Secure Digital Voting Platform</p>
+    </div>
+
+    <div class="login-card">
+        
+        <div class="shield-icon">
+            <div class="shield-container">
+                <img class="icon-img" src="images/sri_lanka_logo.png" alt="Sri Lanka emblem" width="40" height="40">
+            </div>
+        </div>
+
+        
+        <div class="title-section">
+            <h2>Admin Login</h2>
+            <p>Division Electoral Officer Authentication</p>
+        </div>
+        
+        
+        <div class="divider"></div>
+        
+        
+        <form onsubmit="event.preventDefault(); alert('Login functionality would be implemented here');">
+            
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Enter admin username" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password</label>
+                <div class="password-wrapper">
+                    <input type="password" id="password" placeholder="Enter password" required>
+                    <button type="button" class="toggle-password" onclick="togglePassword()">
+                        <img class="icon-img" src="images/eye.png" alt="toggle password" width="20" height="20">
+                    </button>
+                </div>
+            </div>
+            
+            <button type="submit" class="login-button">
+                → Login to System
+            </button>
+        </form>
+
+        
+        <div class="demo-credentials">
+            <h3>Demo Credentials:</h3>
+            
+            <div class="credentials-grid">
+                <div class="credential-item">
+                    <div><strong>Username:</strong> admin_colombo</div>
+                    <div><strong>Password:</strong> admin123</div>
+                </div>
+                <div class="credential-item">
+                    <div><strong>Username:</strong> admin_kandy</div>
+                    <div><strong>Password:</strong> admin123</div>
+                </div>
+                <div class="credential-item">
+                    <div><strong>Username:</strong> admin_galle</div>
+                    <div><strong>Password:</strong> admin123</div>
+                </div>
+                <div class="credential-item">
+                    <div><strong>Username:</strong> admin_jaffna</div>
+                    <div><strong>Password:</strong> admin123</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Powered by Election Commission of Sri Lanka</p>
+        <p>Secure • Transparent • Democratic</p>
+    </div>
+
+    <script>
+        function togglePassword() {
+            const passwordField = document.getElementById('password');
+            passwordField.type = passwordField.type === 'password' ? 'text' : 'password';
+        }
+    </script>
+</body>
+</html>
