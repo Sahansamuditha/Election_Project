@@ -248,14 +248,6 @@
             animation: pulse 2s ease-in-out infinite;
         }
 
-        @keyframes pulse {
-            0%, 100% {
-                box-shadow: 0 0 0 0 rgba(255, 184, 28, 0.4);
-            }
-            50% {
-                box-shadow: 0 0 0 20px rgba(255, 184, 28, 0);
-            }
-        }
 
         .fingerprint-icon {
             font-size: 80px;
@@ -330,38 +322,6 @@
             margin: 5px 0;
         }
 
-        @media (max-width: 768px) {
-            .info-bar {
-                flex-direction: column;
-                gap: 15px;
-                align-items: flex-start;
-            }
-
-            .info-left {
-                flex-direction: column;
-                gap: 10px;
-                align-items: flex-start;
-                width: 100%;
-            }
-
-            .end-session-btn {
-                width: 100%;
-                justify-content: center;
-            }
-
-            .action-buttons {
-                grid-template-columns: 1fr;
-            }
-
-            .card-body {
-                padding: 25px 20px;
-            }
-
-            .fingerprint-circle {
-                width: 140px;
-                height: 140px;
-            }
-        }
     </style>
 </head>
 <body>
