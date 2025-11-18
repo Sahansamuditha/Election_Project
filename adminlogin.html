@@ -1,7 +1,8 @@
-
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sri Lankan Election System - Admin Login</title>
     <style>
         * {
@@ -57,19 +58,27 @@
 
         .shield-icon {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 12px;
         }
 
         .shield-container {
-            width: 80px;
-            height: 80px;
+            width: auto;
+            height: auto;
             margin: 0 auto;
-            background: linear-gradient(135deg, #8B1538 0%, #006747 100%);
-            border-radius: 50%;
+            background: transparent;
+            border-radius: 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 12px rgba(139, 21, 56, 0.3);
+            box-shadow: none;
+            padding: 0;
+        }
+
+        .shield-container img {
+            width: 56px;
+            height: 56px;
+            object-fit: contain;
+            display: block;
         }
 
         .title-section {
@@ -145,6 +154,13 @@
 
         .toggle-password:hover {
             color: #2c3e50;
+        }
+
+        .toggle-password img {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+            display: block;
         }
 
         .login-button {
@@ -224,34 +240,25 @@
     </style>
 </head>
 <body>
-    
-    <!-- Header -->
     <div class="header">
         <div class="color-bar"></div>
         <h1>Sri Lankan Election System</h1>
         <p>Secure Digital Voting Platform</p>
     </div>
 
-    <!-- Main Card -->
     <div class="login-card">
         
-        <!-- Shield Icon -->
         <div class="shield-icon">
             <div class="shield-container">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2L4 6V12C4 16.55 7.16 20.74 12 22C16.84 20.74 20 16.55 20 12V6L12 2Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M9 12L11 14L15 10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
+                <img src="https://icon2.cleanpng.com/20180630/ukq/kisspng-parliament-of-sri-lanka-emblem-of-sri-lanka-govern-5b37dd62231608.0586462715303878101437.jpg">
             </div>
-        </div>
 
-        <!-- Title -->
+        </div>
         <div class="title-section">
             <h2>Admin Login</h2>
             <p>Division Electoral Officer Authentication</p>
         </div>
-        
-        <!-- Color Bar -->
+
         <div class="divider"></div>
 
         <!-- Login Form -->
@@ -268,21 +275,16 @@
                 <div class="password-wrapper">
                     <input type="password" id="password" placeholder="Enter password" required>
                     <button type="button" class="toggle-password" onclick="togglePassword()">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
+                        <img src="images/eye.png" alt="Toggle password">
                     </button>
                 </div>
             </div>
 
-            <!-- Login Button -->
             <button type="submit" class="login-button">
                 → Login to System
             </button>
         </form>
 
-        <!-- Demo Credentials -->
         <div class="demo-credentials">
             <h3>Demo Credentials:</h3>
             
@@ -307,17 +309,11 @@
         </div>
     </div>
 
-    <!-- Footer -->
+
     <div class="footer">
         <p>Powered by Election Commission of Sri Lanka</p>
         <p>Secure • Transparent • Democratic</p>
     </div>
 
-    <script>
-        function togglePassword() {
-            const passwordField = document.getElementById('password');
-            passwordField.type = passwordField.type === 'password' ? 'text' : 'password';
-        }
-    </script>
 </body>
 </html>
