@@ -2,7 +2,7 @@
 require_once __DIR__ . '/db.php';
 session_start();
 
-// Load logged-in user details
+
 $user = null;
 if (!empty($_SESSION['user_id'])) {
     $stmt = $pdo->prepare('SELECT id, fullname, nic, age, address FROM users WHERE id = ? LIMIT 1');
@@ -10,7 +10,7 @@ if (!empty($_SESSION['user_id'])) {
     $user = $stmt->fetch();
 }
 
-// Load admin info if available
+
 $admin = null;
 try {
     $admin = $pdo->query('SELECT name, division FROM admins LIMIT 1')->fetch();
@@ -394,14 +394,14 @@ try {
 <body>
     
     <div class="container">
-        <!-- Header -->
+        
         <div class="header">
             <div class="color-bar"></div>
             <h1>Sri Lankan Election System</h1>
             <p>Secure Digital Voting Platform</p>
         </div>
 
-        <!-- Info Bar -->
+        
         <div class="info-bar">
             <div class="info-left">
                 <div class="info-item">
@@ -431,7 +431,7 @@ try {
             </button>
         </div>
 
-        <!-- Progress Steps -->
+
         <div class="progress-steps">
             <div class="steps">
                 <div class="step completed">
@@ -461,7 +461,7 @@ try {
             </div>
         </div>
 
-        <!-- Voting Card -->
+        
         <div class="voting-card">
             <div class="alert-header">
                 <div class="alert-icon">
@@ -476,13 +476,13 @@ try {
             </div>
 
             <div class="card-body">
-                <!-- Verifying Banner -->
+                
                 <div class="verifying-banner">
                     <div class="verifying-label">Verifying Identity For:</div>
                      <span class="voter-name"><?php echo $user ? h($user['fullname']) : 'Sample Voter'; ?></span>
                 </div>
 
-                <!-- Success Section -->
+                
                 <div class="success-section">
                     <div class="success-circle">
                         <div class="checkmark-icon">
@@ -498,7 +498,7 @@ try {
                     </div>
                 </div>
 
-                <!-- Action Buttons -->
+                
                 <div class="action-buttons">
                     <button class="back-button" onclick="alert('Going back...')">
                         Go Back
@@ -513,7 +513,7 @@ try {
             </div>
         </div>
 
-        <!-- Footer -->
+        
         <div class="footer">
             <p>Powered by Election Commission of Sri Lanka</p>
             <p>Secure • Transparent • Democratic</p>
