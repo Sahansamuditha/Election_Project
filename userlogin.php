@@ -1,0 +1,423 @@
+
+<html>
+<head>
+    <title>Sri Lankan Election Voting System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8eef3 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .color-bar {
+            height: 4px;
+            width: 250px;
+            background: linear-gradient(to right, #8B1538 0%, #8B1538 33%, #FFB81C 33%, #FFB81C 50%, #FF6B35 50%, #FF6B35 66%, #006747 66%, #006747 100%);
+            margin: 0 auto 15px;
+            border-radius: 2px;
+        }
+
+        .header h1 {
+            font-size: 26px;
+            color: #2c3e50;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        .info-bar {
+            background: white;
+            border: 1px solid #e1e8ed;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .info-left {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+            font-size: 14px;
+            color: #2c3e50;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-item .label {
+            color: #7f8c8d;
+        }
+
+        .info-item .value {
+            font-weight: 500;
+        }
+
+        .end-session-btn {
+            background: white;
+            border: 1px solid #e74c3c;
+            color: #e74c3c;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 13px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+
+        .end-session-btn:hover {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .progress-steps {
+            background: white;
+            border: 1px solid #e1e8ed;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            z-index: 2;
+            flex: 1;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 16px;
+            background: white;
+            border: 2px solid #e1e8ed;
+            color: #95a5a6;
+        }
+
+        .step.active .step-number {
+            background: #8B1538;
+            border-color: #8B1538;
+            color: white;
+        }
+
+        .step.completed .step-number {
+            background: #27ae60;
+            border-color: #27ae60;
+            color: white;
+        }
+
+        .step-label {
+            font-size: 12px;
+            color: #7f8c8d;
+            text-align: center;
+        }
+
+        .step.active .step-label {
+            color: #2c3e50;
+            font-weight: 500;
+        }
+
+        .voting-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, #8B1538 0%, #a01d47 100%);
+            color: white;
+            padding: 20px 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-header-text h2 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .card-header-text p {
+            font-size: 13px;
+            opacity: 0.9;
+        }
+
+        .card-body {
+            padding: 35px 30px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: #2c3e50;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e1e8ed;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: border-color 0.3s;
+            outline: none;
+        }
+
+        .form-group input:focus {
+            border-color: #8B1538;
+        }
+
+        .form-group input::placeholder {
+            color: #bdc3c7;
+        }
+
+        .help-text {
+            font-size: 12px;
+            color: #7f8c8d;
+            margin-top: 8px;
+        }
+
+        .verify-button {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #c97c8a 0%, #b86b7a 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .verify-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(139, 21, 56, 0.3);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 25px;
+            color: #7f8c8d;
+            font-size: 12px;
+        }
+
+        .footer p {
+            margin: 5px 0;
+        }
+
+        @media (max-width: 768px) {
+            .info-bar {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
+
+            .info-left {
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-start;
+                width: 100%;
+            }
+
+            .end-session-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .steps {
+                flex-wrap: wrap;
+            }
+
+            .step-label {
+                font-size: 11px;
+            }
+
+            .card-body {
+                padding: 25px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="color-bar"></div>
+            <h1>Sri Lankan Election System</h1>
+            <p>Secure Digital Voting Platform</p>
+        </div>
+
+        <!-- Info Bar -->
+        <div class="info-bar">
+            <div class="info-left">
+                <div class="info-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="#7f8c8d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="12" cy="7" r="4" stroke="#7f8c8d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span class="label">Admin:</span>
+                    <span class="value">Priya Wickramasinghe</span>
+                </div>
+                <div class="info-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke="#7f8c8d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="12" cy="10" r="3" stroke="#7f8c8d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span class="label">Division:</span>
+                    <span class="value">Kandy District</span>
+                </div>
+            </div>
+            <button class="end-session-btn" onclick="window.location.href='adminlogin.php'">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <polyline points="16 17 21 12 16 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <line x1="21" y1="12" x2="9" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                End Session
+            </button>
+        </div>
+
+        <!-- Progress Steps -->
+        <div class="progress-steps">
+            <div class="steps">
+                <div class="step active">
+                    <div class="step-number">1</div>
+                    <div class="step-label">ID</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-label">Details</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-label">Fingerprint</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-label">Party</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-label">Candidate</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">6</div>
+                    <div class="step-label">Confirm</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Voting Card -->
+        <div class="voting-card">
+            <div class="card-header">
+                <div class="card-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <line x1="16" y1="2" x2="16" y2="6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <line x1="8" y1="2" x2="8" y2="6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <line x1="3" y1="10" x2="21" y2="10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="card-header-text">
+                    <h2>Sri Lankan Election Voting System</h2>
+                    <p>Voter Identification</p>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <?php if (isset($_GET['error'])): ?>
+                    <div style="background:#ffe6e6;padding:10px;border:1px solid #ffb3b3;border-radius:6px;margin-bottom:12px;color:#a33">NIC not found</div>
+                <?php endif; ?>
+                <form method="post" action="login_user.php">
+                    <div class="form-group">
+                        <label for="nic">National Identity Card Number</label>
+                        <input 
+                            type="text" 
+                            id="nic" name="nic"
+                            placeholder="Enter your NIC number (e.g., 199512345678)"
+                            maxlength="20"
+                            required
+                        >
+                        <div class="help-text">Only NIC required to sign in</div>
+                    </div>
+
+                    <button type="submit" class="verify-button">
+                        Verify Identity
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>Powered by Election Commission of Sri Lanka</p>
+            <p>Secure • Transparent • Democratic</p>
+        </div>
+    </div>
+
+</body>
+</html>
