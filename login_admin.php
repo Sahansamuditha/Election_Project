@@ -20,7 +20,7 @@ if ($admin) {
     if (password_verify($password, $stored)) {
         $ok = true;
     } elseif ($stored === $password) {
-        // Legacy plaintext password in DB — accept it and upgrade to hashed
+        
         $ok = true;
         $newHash = password_hash($password, PASSWORD_DEFAULT);
         $u = $pdo->prepare('UPDATE admins SET password = ? WHERE id = ?');
@@ -29,7 +29,7 @@ if ($admin) {
 
     if ($ok) {
         $_SESSION['admin_id'] = $admin['id'];
-        // Only the special admin user should go to the vote totals page
+        
         if (isset($admin['username']) && $admin['username'] === 'srilankan_admin') {
             header('Location: vote_count.php');
         } else {
