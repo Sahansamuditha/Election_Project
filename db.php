@@ -1,5 +1,5 @@
 <?php
-// Database connection using PDO
+
 $DB_HOST = '127.0.0.1';
 $DB_NAME = 'voting_app';
 $DB_USER = 'root';
