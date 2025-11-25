@@ -22,7 +22,7 @@ try {
         $stmtC->execute([$pid, $name . ' Candidate 1']);
         $stmtC->execute([$pid, $name . ' Candidate 2']);
     }
-
+//Save changes 
     $pdo->commit();
     echo "Seeded default parties and candidates.\n";
     echo "<p><a href=\"selectparty.php\">Go to party selection</a></p>";
