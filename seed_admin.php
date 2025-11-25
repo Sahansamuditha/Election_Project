@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/db.php';
 
-// Create or update several admin accounts with a secure hashed password
+
 $admins = [
     'admin',
     'admin_colombo',
@@ -11,7 +11,7 @@ $admins = [
     'srilankan_admin',
 ];
 
-$password = 'admin123'; // change after first login
+$password = 'admin123';
 $hash = password_hash($password, PASSWORD_DEFAULT);
 
 foreach ($admins as $username) {
