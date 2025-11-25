@@ -3,7 +3,7 @@
 require_once __DIR__ . '/db.php';
 session_start();
 
-// Require a logged-in user (set in login_user.php)
+
 if (empty($_SESSION['user_id'])) {
     header('Location: userlogin.php');
     exit;
@@ -14,7 +14,7 @@ $stmt->execute([$_SESSION['user_id']]);
 $user = $stmt->fetch();
 
 if (!$user) {
-    // If user not found, redirect back to login
+    
     header('Location: userlogin.php?error=1');
     exit;
 }
