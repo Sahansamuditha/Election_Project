@@ -1,5 +1,4 @@
--- SQL schema for Voting App
--- Run this in phpMyAdmin or via MySQL CLI (it creates schema and sample data)
+
 
 CREATE DATABASE IF NOT EXISTS `voting_app` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE `voting_app`;
@@ -11,7 +10,7 @@ CREATE TABLE IF NOT EXISTS `admins` (
   PRIMARY KEY (`id`)
 );
 
--- Insert demo admin users (passwords will be seeded/hashed by seed_admin.php)
+
 INSERT IGNORE INTO `admins` (`username`, `password`) VALUES
 ('admin_colombo','admin123'),
 ('admin_kandy','admin123'),
@@ -29,21 +28,6 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`id`)
 );
 
-CREATE TABLE IF NOT EXISTS `bios` (
-  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `user_id` INT UNSIGNED NULL,
-  `bio` TEXT,
-  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  INDEX (`user_id`),
-  FOREIGN KEY (`user_id`) REFERENCES `users`(`id`) ON DELETE SET NULL
-);
-
-CREATE TABLE IF NOT EXISTS `parties` (
-  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(150) NOT NULL,
-  PRIMARY KEY (`id`)
-);
 
 CREATE TABLE IF NOT EXISTS `candidates` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -67,7 +51,6 @@ CREATE TABLE IF NOT EXISTS `votes` (
   FOREIGN KEY (`party_id`) REFERENCES `parties`(`id`) ON DELETE SET NULL
 );
 
--- Sample parties and candidates (edit as needed)
 INSERT IGNORE INTO `parties` (`id`,`name`) VALUES
 (1,'Sri Lanka Podujana Peramuna'),
 (2,'National People’s Power'),
@@ -92,7 +75,7 @@ INSERT IGNORE INTO `candidates` (`id`,`party_id`,`name`) VALUES
 (15,4,'P. Selvarasa'),
 (16,4,'S. J. V. Chelvanayakam');
 
--- Sample users (voters) and their bios
+
 INSERT IGNORE INTO `users` (`id`,`fullname`,`address`,`age`,`nic`) VALUES
 (1,'Sahan Samuditha','No; 26, Ruhunu Ridiyagama, Ambalantota',23,'200219601162'),
 (2,'Chathupama Thathsarani','"Susitha",Gurupokuna,Hungama',23,'200281301793'),
