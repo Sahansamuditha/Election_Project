@@ -2,36 +2,36 @@
 require_once __DIR__ . '/db.php';
 session_start();
 
-// Require login
+
 if (empty($_SESSION['user_id'])) {
     header('Location: userlogin.php');
     exit;
 }
 
-// Candidate id can come from POST (from selectcandi) or fallback to POST from confirm form
+
 $candidate_id = null;
 if (!empty($_POST['candidate_id'])) {
     $candidate_id = (int)$_POST['candidate_id'];
 }
 
 if (!$candidate_id) {
-    // No candidate selected — redirect back
+
     header('Location: selectcandi.php');
     exit;
 }
 
-// Fetch candidate and party
+
 $stmt = $pdo->prepare('SELECT c.*, p.name AS party_name FROM candidates c LEFT JOIN parties p ON c.party_id = p.id WHERE c.id = ?');
 $stmt->execute([$candidate_id]);
 $candidate = $stmt->fetch();
 
 if (!$candidate) {
-    // Invalid candidate
+  
     header('Location: selectcandi.php');
     exit;
 }
 
-// Load logged-in user details for display (avoid undefined variable)
+
 $user = null;
 if (!empty($_SESSION['user_id'])) {
     $stmt = $pdo->prepare('SELECT id, fullname, nic, age, address FROM users WHERE id = ? LIMIT 1');
@@ -39,7 +39,7 @@ if (!empty($_SESSION['user_id'])) {
     $user = $stmt->fetch();
 }
 
-// Load admin info if available
+
 $admin = null;
 try {
     $admin = $pdo->query('SELECT name, division FROM admins LIMIT 1')->fetch();
@@ -509,14 +509,14 @@ try {
 <body>
     
     <div class="container">
-        <!-- Header -->
+      
         <div class="header">
             <div class="color-bar"></div>
             <h1>Sri Lankan Election System</h1>
             <p>Secure Digital Voting Platform</p>
         </div>
 
-        <!-- Info Bar -->
+      
         <div class="info-bar">
             <div class="info-left">
                 <div class="info-item">
@@ -546,7 +546,7 @@ try {
             </button>
         </div>
 
-        <!-- Progress Steps -->
+        
         <div class="progress-steps">
             <div class="steps">
                 <div class="step completed">
@@ -576,7 +576,7 @@ try {
             </div>
         </div>
 
-        <!-- Voting Card -->
+      
         <div class="voting-card">
             <div class="alert-header">
                 <div class="alert-icon">
@@ -591,17 +591,17 @@ try {
             </div>
 
             <div class="card-body">
-                <!-- Voter Banner -->
+               
                 <div class="voter-banner">
                     <div class="voter-label">Voter Name</div>
                      <span class="voter-name"><?php echo $user ? h($user['fullname']) : 'Sample Voter'; ?></span>
                 </div>
 
-                <!-- Summary Box -->
+              
                 <div class="summary-box">
                     <div class="summary-title">Your Vote Summary</div>
 
-                    <!-- Political Party -->
+                    
                     <div class="selection-item">
                         <div class="selection-logo logo-green">
                             <svg width="35" height="35" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -614,7 +614,7 @@ try {
                             </div>
                     </div>
 
-                    <!-- Selected Candidate -->
+                 
                     <div class="selection-item">
                         <div class="candidate-number-circle">
                             <span class="candidate-number-text"><?php echo str_pad((int)$candidate['id'],2,'0',STR_PAD_LEFT); ?></span>
@@ -626,7 +626,7 @@ try {
                     </div>
                 </div>
 
-                <!-- Warning Box -->
+                
                 <div class="warning-box">
                     <div class="warning-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -641,7 +641,7 @@ try {
                     </div>
                 </div>
 
-                <!-- Action Buttons (no checkbox) -->
+                
                 <form method="post" action="vote.php" class="action-buttons" style="display:flex; gap:15px; align-items:center;">
                     <a class="back-button" href="selectcandidate.php">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -657,12 +657,12 @@ try {
                     </button>
                 </form>
 
-                <!-- Help Text -->
+          
                 <div class="help-text">Please confirm the details above to submit your vote</div>
             </div>
         </div>
 
-        <!-- Footer -->
+       
         <div class="footer">
             <p>Powered by Election Commission of Sri Lanka</p>
             <p>Secure • Transparent • Democratic</p>
@@ -670,7 +670,7 @@ try {
     </div>
 
     <script>
-        // Confirmation checkbox removed; form submits directly to vote.php
+        
     </script>
 
 </body>
