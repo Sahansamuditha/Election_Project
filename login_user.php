@@ -18,7 +18,7 @@ $stmt->execute([$nic]);
 $user = $stmt->fetch();
 
 if ($user) {
-    // Log in user by NIC only
+    
     $_SESSION['user_id'] = $user['id'];
     header('Location: userdisplay.php');
     exit;
