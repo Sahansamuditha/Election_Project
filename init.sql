@@ -1,5 +1,3 @@
-
-
 CREATE DATABASE IF NOT EXISTS `voting_app` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE `voting_app`;
 
@@ -10,14 +8,20 @@ CREATE TABLE IF NOT EXISTS `admins` (
   PRIMARY KEY (`id`)
 );
 
-
 INSERT IGNORE INTO `admins` (`username`, `password`) VALUES
+('admin','admin123'),
 ('admin_colombo','admin123'),
 ('admin_kandy','admin123'),
 ('admin_galle','admin123'),
 ('srilanka_admin','admin123'),
+('srilankan_admin','admin123'),
 ('admin_jaffna','admin123');
 
+CREATE TABLE IF NOT EXISTS `parties` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`id`)
+);
 
 CREATE TABLE IF NOT EXISTS `users` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -27,7 +31,6 @@ CREATE TABLE IF NOT EXISTS `users` (
   `nic` VARCHAR(32) DEFAULT NULL,
   PRIMARY KEY (`id`)
 );
-
 
 CREATE TABLE IF NOT EXISTS `candidates` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -75,11 +78,10 @@ INSERT IGNORE INTO `candidates` (`id`,`party_id`,`name`) VALUES
 (15,4,'P. Selvarasa'),
 (16,4,'S. J. V. Chelvanayakam');
 
-
 INSERT IGNORE INTO `users` (`id`,`fullname`,`address`,`age`,`nic`) VALUES
 (1,'Sahan Samuditha','No; 26, Ruhunu Ridiyagama, Ambalantota',23,'200219601162'),
 (2,'Chathupama Thathsarani','"Susitha",Gurupokuna,Hungama',23,'200281301793'),
-(2,'Tharaka Jayampathi','No;426,Dalukkanda road, Egodawela, Karandeniya',23,'200278400049'),
-(2,'Imal Lakshitha','No; 265/1, Ehala Lelwela,Waduraba,Galle',22,'200304011822'),
-(3,'Nisansala Kumari','No; 14, Lake Road, Kandy',22,'200215301234'),
-(4,'Dulanjali Perera','No; 45, Galle Road, Colombo',24,'200298401456');
+(3,'Tharaka Jayampathi','No;426,Dalukkanda road, Egodawela, Karandeniya',23,'200278400049'),
+(4,'Imal Lakshitha','No; 265/1, Ehala Lelwela,Waduraba,Galle',22,'200304011822'),
+(5,'Nisansala Kumari','No; 14, Lake Road, Kandy',22,'200215301234'),
+(6,'Dulanjali Perera','No; 45, Galle Road, Colombo',24,'200298401456');
