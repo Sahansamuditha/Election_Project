@@ -1,7 +1,8 @@
-
 <?php
-require_once __DIR__ . '/db.php';
+ob_start();
 session_start();
+require_once __DIR__ . '/db.php';
+
 
 
 if (empty($_SESSION['user_id'])) {
@@ -559,7 +560,7 @@ if (!$user) {
                 <!-- Eligibility Notice -->
                 <div class="eligibility-notice">
                     <div class="eligibility-icon">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                             <polyline points="20 6 9 17 4 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </div>
@@ -571,10 +572,10 @@ if (!$user) {
 
                 <!-- Action Buttons -->
                 <div class="action-buttons">
-                    <button class="back-button" onclick="alert('Going back...')">
+                    <button type="button" class="back-button" onclick="window.history.back();" aria-label="Go back">
                         Go Back
                     </button>
-                    <button class="proceed-button" onclick="window.location.href='biohtml.php'">
+                    <button type="button" class="proceed-button" onclick="window.location.href='biohtml.php'" aria-label="Proceed to verification">
                         Proceed to Verification
                     </button>
                 </div>

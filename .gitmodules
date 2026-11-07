@@ -1,0 +1,3 @@
+[submodule "external/Election_Project"]
+	path = external/Election_Project
+	url = https://github.com/Sahansamuditha/Election_Project.git

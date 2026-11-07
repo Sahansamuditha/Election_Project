@@ -29,6 +29,7 @@ if ($admin) {
 
     if ($ok) {
         $_SESSION['admin_id'] = $admin['id'];
+        session_regenerate_id(true);
         
         if (isset($admin['username']) && $admin['username'] === 'srilankan_admin') {
             header('Location: vote_count.php');

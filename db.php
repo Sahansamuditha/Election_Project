@@ -1,9 +1,9 @@
 <?php
 
-$DB_HOST = '127.0.0.1';
-$DB_NAME = 'voting_app';
-$DB_USER = 'root';
-$DB_PASS = '';
+$DB_HOST = getenv('DB_HOST') ?: '127.0.0.1';
+$DB_NAME = getenv('DB_NAME') ?: 'voting_app';
+$DB_USER = getenv('DB_USER') ?: 'root';
+$DB_PASS = getenv('DB_PASS') !== false ? getenv('DB_PASS') : '';
 
 $options = [
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
